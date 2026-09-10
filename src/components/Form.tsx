@@ -54,7 +54,7 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form  className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <label>Title</label>
       <input
         name="title"
