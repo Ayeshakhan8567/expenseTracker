@@ -170,7 +170,8 @@ const Form = () => {
               Total Expense
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold text-red-500">
+          
+            <h2 className="mt-2 text-2xl font-bold text-red-800">
               {totalExpense}
             </h2>
           </div>
