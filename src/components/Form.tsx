@@ -131,100 +131,231 @@ const Form = () => {
   };
 
   return (
-    <>
-      <label>Income</label>
+    <div className="min-h-screen bg-gray-100 px-4 py-10">
+      <div className="mx-auto max-w-5xl">
 
-      <input
-        value={income}
-        onChange={(e) =>
-          setIncome(e.target.value === "" ? "" : Number(e.target.value))
-        }
-        type="number"
-        placeholder="Income"
-      />
-
-      <h2>Total Expense: {totalExpense}</h2>
-
-      <h2>Balance: {balance}</h2>
-
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <label>Title</label>
-
-        <input
-          name="title"
-          value={inputs.title}
-          onChange={handleChange}
-          type="text"
-          placeholder="Title"
-        />
-
-        <label>Amount</label>
-
-        <input
-          name="amount"
-          value={inputs.amount}
-          onChange={handleChange}
-          type="number"
-          placeholder="Amount"
-        />
-
-        <label>Date</label>
-
-        <input
-          name="date"
-          value={inputs.date}
-          onChange={handleChange}
-          type="date"
-        />
-
-        <label>Category</label>
-
-        <select
-          name="category"
-          value={inputs.category}
-          onChange={handleChange}
-        >
-          <option value="">Select category</option>
-          <option value="food">Food</option>
-          <option value="transport">Transport</option>
-          <option value="shopping">Shopping</option>
-          <option value="bills">Bills</option>
-          <option value="education">Education</option>
-        </select>
-
-        <button type="submit">
-          {editId ? "Update Expense" : "Add Expense"}
-        </button>
-      </form>
-
-      <button onClick={() => setShowExpenses(!showExpenses)}>
-        {showExpenses ? "Hide expenses" : "Show expenses"}
-      </button>
-
-      {showExpenses && (
-        <div>
-          <h1>Expense Information</h1>
-
-          <p>Food: {expenseInfo.food}</p>
-          <p>Transport: {expenseInfo.transport}</p>
-          <p>Shopping: {expenseInfo.shopping}</p>
-          <p>Bills: {expenseInfo.bills}</p>
-          <p>Education: {expenseInfo.education}</p>
-
-          <ul>
-            {list.map((expense) => (
-              <li
-                key={expense.id}
-                className="border border-gray-300 p-4 mb-4 rounded-lg"
-                onClick={() => handleEdit(expense)}
-              >
-                <h3>{expense.title}</h3>
-              </li>
-            ))}
-          </ul>
+        {/* Heading */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">
+            Expense Tracker
+          </h1>
+          <p className="mt-1 text-gray-500">
+            Manage your income and expenses
+          </p>
         </div>
-      )}
-    </>
+
+        {/* Income / Balance / Expense */}
+        <div className="mb-8 grid gap-4 md:grid-cols-3">
+
+          <div className="rounded-xl bg-white p-6 shadow-sm">
+            <label className="mb-2 block text-sm font-medium text-gray-600">
+              Income
+            </label>
+
+            <input
+              className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+              value={income}
+              onChange={(e) =>
+                setIncome(
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
+              }
+              type="number"
+              placeholder="Income"
+            />
+          </div>
+
+          <div className="rounded-xl bg-white p-6 shadow-sm">
+            <p className="text-sm font-medium text-gray-500">
+              Total Expense
+            </p>
+
+            <h2 className="mt-2 text-2xl font-bold text-red-500">
+              {totalExpense}
+            </h2>
+          </div>
+
+          <div className="rounded-xl bg-white p-6 shadow-sm">
+            <p className="text-sm font-medium text-gray-500">
+              Balance
+            </p>
+
+            <h2 className="mt-2 text-2xl font-bold text-green-600">
+              {balance}
+            </h2>
+          </div>
+        </div>
+
+        {/* Form */}
+        <form
+          className="mb-8 rounded-xl bg-white p-6 shadow-sm"
+          onSubmit={handleSubmit}
+        >
+          <h2 className="mb-6 text-xl font-semibold text-gray-900">
+            {editId ? "Edit Expense" : "Add Expense"}
+          </h2>
+
+          <div className="grid gap-5 md:grid-cols-2">
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                Title
+              </label>
+
+              <input
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                name="title"
+                value={inputs.title}
+                onChange={handleChange}
+                type="text"
+                placeholder="e.g. Gym"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                Amount
+              </label>
+
+              <input
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                name="amount"
+                value={inputs.amount}
+                onChange={handleChange}
+                type="number"
+                placeholder="e.g. 1000"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                Date
+              </label>
+
+              <input
+                className="w-full rounded-lg border border-gray-300 px-4 py-2.5 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                name="date"
+                value={inputs.date}
+                onChange={handleChange}
+                type="date"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-gray-700">
+                Category
+              </label>
+
+              <select
+                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                name="category"
+                value={inputs.category}
+                onChange={handleChange}
+              >
+                <option value="">Select category</option>
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="shopping">Shopping</option>
+                <option value="bills">Bills</option>
+                <option value="education">Education</option>
+              </select>
+            </div>
+          </div>
+
+          <button
+            className="mt-6 w-full rounded-lg bg-blue-600 px-5 py-3 font-medium text-white transition hover:bg-blue-700 active:scale-[0.98]"
+            type="submit"
+          >
+            {editId ? "Update Expense" : "Add Expense"}
+          </button>
+        </form>
+
+        {/* Show Expenses Button */}
+        <button
+          className="mb-6 rounded-lg bg-gray-900 px-5 py-3 font-medium text-white transition hover:bg-gray-800"
+          onClick={() => setShowExpenses(!showExpenses)}
+        >
+          {showExpenses ? "Hide expenses" : "Show expenses"}
+        </button>
+
+        {showExpenses && (
+          <div className="rounded-xl bg-white p-6 shadow-sm">
+
+            <h1 className="mb-6 text-2xl font-bold text-gray-900">
+              Expense Information
+            </h1>
+
+            {/* Category Information */}
+            <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+
+              <div className="rounded-lg bg-orange-50 p-4">
+                <p className="text-sm text-gray-500">Food</p>
+                <p className="mt-1 text-xl font-bold text-orange-600">
+                  {expenseInfo.food}
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-blue-50 p-4">
+                <p className="text-sm text-gray-500">Transport</p>
+                <p className="mt-1 text-xl font-bold text-blue-600">
+                  {expenseInfo.transport}
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-purple-50 p-4">
+                <p className="text-sm text-gray-500">Shopping</p>
+                <p className="mt-1 text-xl font-bold text-purple-600">
+                  {expenseInfo.shopping}
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-red-50 p-4">
+                <p className="text-sm text-gray-500">Bills</p>
+                <p className="mt-1 text-xl font-bold text-red-600">
+                  {expenseInfo.bills}
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-green-50 p-4">
+                <p className="text-sm text-gray-500">Education</p>
+                <p className="mt-1 text-xl font-bold text-green-600">
+                  {expenseInfo.education}
+                </p>
+              </div>
+
+            </div>
+
+            {/* Expense List */}
+            <ul className="space-y-3">
+              {list.map((expense) => (
+                <li
+                  key={expense.id}
+                  className="cursor-pointer rounded-lg border border-gray-200 p-4 transition hover:border-blue-400 hover:bg-blue-50"
+                  onClick={() => handleEdit(expense)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-semibold text-gray-900">
+                        {expense.title}
+                      </h3>
+
+                      <p className="mt-1 text-sm text-gray-500">
+                        {expense.category} • {expense.date}
+                      </p>
+                    </div>
+
+                    <p className="font-bold text-red-500">
+                      {expense.amount}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 
