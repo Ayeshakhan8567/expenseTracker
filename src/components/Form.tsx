@@ -181,7 +181,7 @@ const Form = () => {
               Balance
             </p>
 
-            <h2 className="mt-2 text-2xl font-bold text-green-600">
+            <h2 className="mt-2 text-2xl font-bold text-green-800">
               {balance}
             </h2>
           </div>
@@ -291,35 +291,35 @@ const Form = () => {
 
               <div className="rounded-lg bg-orange-50 p-4">
                 <p className="text-sm text-gray-500">Food</p>
-                <p className="mt-1 text-xl font-bold text-orange-600">
+                <p className="mt-1 text-xl font-bold text-orange-800">
                   {expenseInfo.food}
                 </p>
               </div>
 
               <div className="rounded-lg bg-blue-50 p-4">
                 <p className="text-sm text-gray-500">Transport</p>
-                <p className="mt-1 text-xl font-bold text-blue-600">
+                <p className="mt-1 text-xl font-bold text-blue-800">
                   {expenseInfo.transport}
                 </p>
               </div>
 
               <div className="rounded-lg bg-purple-50 p-4">
                 <p className="text-sm text-gray-500">Shopping</p>
-                <p className="mt-1 text-xl font-bold text-purple-600">
+                <p className="mt-1 text-xl font-bold text-purple-800">
                   {expenseInfo.shopping}
                 </p>
               </div>
 
               <div className="rounded-lg bg-red-50 p-4">
                 <p className="text-sm text-gray-500">Bills</p>
-                <p className="mt-1 text-xl font-bold text-red-600">
+                <p className="mt-1 text-xl font-bold text-red-800">
                   {expenseInfo.bills}
                 </p>
               </div>
 
               <div className="rounded-lg bg-green-50 p-4">
                 <p className="text-sm text-gray-500">Education</p>
-                <p className="mt-1 text-xl font-bold text-green-600">
+                <p className="mt-1 text-xl font-bold text-green-800">
                   {expenseInfo.education}
                 </p>
               </div>
@@ -345,7 +345,7 @@ const Form = () => {
                       </p>
                     </div>
 
-                    <p className="font-bold text-red-500">
+                    <p className="font-bold text-red-800">
                       {expense.amount}
                     </p>
                   </div>
