@@ -9,6 +9,8 @@ type Inputs = {
   id: string;
 };
 
+
+
 const Form = () => {
   const [inputs, setInputs] = useState<Inputs>({
     title: "",
@@ -17,6 +19,11 @@ const Form = () => {
     category: "",
     id: "",
   });
+
+
+  function deleteExpense(expense:Inputs){
+setList((prevList) => prevList.filter((item) => item.id !== expense.id))
+}
 
   const [showExpenses, setShowExpenses] = useState<boolean>(false);
 
@@ -31,11 +38,6 @@ const Form = () => {
     const storedList = localStorage.getItem("tasks");
     return storedList ? JSON.parse(storedList) : [];
   });
-
-
-  const deleteExpense = (expense: Inputs) => {
-    setList((prevList) => prevList.filter((item) => item.id !== expense.id));
-  };
 
   const totalExpense = list.reduce(
     (total, expense) => total + Number(expense.amount),
