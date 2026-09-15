@@ -32,6 +32,11 @@ const Form = () => {
     return storedList ? JSON.parse(storedList) : [];
   });
 
+
+  const deleteExpense = (expense: Inputs) => {
+    setList((prevList) => prevList.filter((item) => item.id !== expense.id));
+  };
+
   const totalExpense = list.reduce(
     (total, expense) => total + Number(expense.amount),
     0
@@ -332,8 +337,10 @@ const Form = () => {
                 <li
                   key={expense.id}
                   className="cursor-pointer rounded-lg border border-gray-200 p-4 transition hover:border-blue-400 hover:bg-blue-50"
-                  onClick={() => handleEdit(expense)}
+                 
                 >
+                  <button  onClick={() => handleEdit(expense)} className=" mb-6 rounded-lg bg-gray-900 px-5 py-3 font-medium text-white transition hover:bg-gray-800 " >Edit</button>
+                  <button onClick={()=>deleteExpense(expense)} className=" mb-6 rounded-lg bg-gray-900 px-5 py-3 font-medium text-white transition hover:bg-gray-800 " >Delete</button>
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-semibold text-gray-900">
